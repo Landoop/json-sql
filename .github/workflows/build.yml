@@ -13,6 +13,16 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Install locall sql-core
+      run: |
+        apt update -y
+        apt install git
+        export OLDPWD="${PWD}"
+        mkdir -vp /opt
+        git clone https://github.com/lensesio/sql-core.git
+        cd /opt/sql-core
+        git checkout update/scala_12
+        ./gradlew clean build install
     - name: Download gradle
       run: ./gradlew --version
     - name: Run tests
