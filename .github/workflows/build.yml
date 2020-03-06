@@ -15,8 +15,6 @@ jobs:
         java-version: 1.8
     - name: Install locall sql-core
       run: |
-        apt update -y
-        apt install git
         export OLDPWD="${PWD}"
         mkdir -vp /opt
         git clone https://github.com/lensesio/sql-core.git
