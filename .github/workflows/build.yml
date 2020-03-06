@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Install locall sql-core
+    - name: Install local sql-core
       run: |
         export OLDPWD="${PWD}"
         mkdir -vp /opt && cd /opt
@@ -21,6 +21,7 @@ jobs:
         cd /opt/sql-core
         git checkout update/scala_12
         ./gradlew clean build install
+        cd "${OLDPWD}"
     - name: Download gradle
       run: ./gradlew --version
     - name: Run tests
